@@ -1,0 +1,59 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "Your Digital Personal Assistant",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "postinstall": "electron-builder install-app-deps",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder -mw"
+  },
+  "build": {
+    "appId": "com.amy.drreddyslabs",
+    "productName": "Amy",
+    "copyright": "Copyright © Bitonic Technology Labs, Inc. Silverside road, Wilmington, Delaware 02139.",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/amy.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": false,
+      "runAfterFinish": true
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.utilities",
+      "icon": "build/amy.icns"
+    },
+    "dmg": {
+      "title": "AMY"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/electron/electron-quick-start.git"
+  },
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^7.0.0",
+    "electron-builder": "^21.2.0"
+  },
+  "dependencies": {
+    "node-notifier": "^6.0.0"
+  }
+}
