@@ -6,6 +6,54 @@ const path = require('path')
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
+// Function to create menu panel
+function createMenu() {
+    const edit = {
+        label: "Edit",
+        submenu: [
+            {
+                label: "Cut",
+                accelerator: "CmdOrCtrl+X",
+                selector: "cut:"
+            },
+            {
+                label: "Copy",
+                accelerator: "CmdOrCtrl+C",
+                selector: "copy:"
+            },
+            {
+                label: "Paste",
+                accelerator: "CmdOrCtrl+V",
+                selector: "paste:"
+            },
+            {
+                label: "Select All",
+                accelerator: "CmdOrCtrl+A",
+                selector: "selectAll:"
+            }
+        ]
+    }
+    const application = {
+        label: "Application",
+        submenu: [
+            {
+                label: "Quit",
+                accelerator: "Command+Q",
+                click: () => {
+                    app.quit()
+                }
+            }
+        ]
+    }
+    const template = [
+        application,
+        edit
+    ]
+
+    Menu.setApplicationMenu(Menu.buildFromTemplate(template));
+}
+
+// Function to create widnow
 function createWindow() {
     // Create the browser window.
     mainWindow = new BrowserWindow({
@@ -23,9 +71,6 @@ function createWindow() {
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
 
-    // Diable menubar in the top
-    Menu.setApplicationMenu(null);
-
     // Emitted when the window is closed.
     mainWindow.on('closed', function () {
         // Dereference the window object, usually you would store windows
@@ -38,7 +83,10 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', () => {
+    createWindow();
+    createMenu();
+})
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {

@@ -7,12 +7,14 @@
 </head>
 
 <body>
+  <!-- To display the notifications -->
   <script src="notification.js"></script>
   <script type="text/javascript">
-    // const link = "https://amy.mydrreddys.com/widget/mobile.js";
-    var link = "http://127.0.0.1:8080/mobile.js"
+    // var link = "http://127.0.0.1:8080/mobile.js"
+    //host: 'https://amy.mydrreddys.com',
+    const link = "https://amy.mydrreddys.com/widget/mobile.js";
     window.ymConfig = {
-      bot: 'x1567791446662', channel: 'electron', host: 'https://amy.mydrreddys.com',
+      bot: 'x1568177280475', channel: 'electron',
       ipcRenderer: window.ipcRenderer
     };
     (function () { var w = window, ic = w.YellowMessenger; if ("function" === typeof ic) ic("reattach_activator"), ic("update", ymConfig); else { var d = document, i = function () { i.c(arguments) }; function l() { var e = d.createElement("script"); e.type = "text/javascript", e.async = !0, e.src = link; var t = d.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t) } i.q = [], i.c = function (e) { i.q.push(e) }, w.YellowMessenger = i, w.attachEvent ? w.attachEvent("onload", l) : w.addEventListener("load", l, !1) } })();
